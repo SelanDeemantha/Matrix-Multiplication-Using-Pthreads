@@ -1,0 +1,57 @@
+\documentclass[12pt,oneside,a4paper]{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\font\titlefont=cmr12 at 40pt
+
+\title{\titlefont{Matrix Multiplication Runtime Using Pthreads}}
+
+\author{S.P.S Deemantha (CST140007)}
+\begin{document}
+
+	\maketitle
+
+
+	\newpage
+
+	\tableofcontents
+
+	\newpage
+
+	\section{CPU Programe Runtime}
+
+	\par
+	This program is executed in normal CPU and x,y values are extracted from the average runtime of different number of pthreads.The Graph has been ploted according to number of pthreads and avarage run time. Also the size of the matrix is fixed here.
+	\hfill \break
+      
+     \vspace{5mm} 
+                
+    \pgfplotstabletypeset{r.dat}
+    \vspace{2cm} 
+     
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=NumOfPthreads,ylabel=Runtime(s),legend style={at={(0.35,-0.25)},anchor=west}]
+		    \addplot table [y=Runtime(s), x=NumOfPthreads] {r.dat}; 
+			\addplot[color=red,mark=x] table[ignore chars={(,)}] {r.dat};
+			\addlegendentry{$Pthreads$}
+		\end{axis}
+	\end{tikzpicture}
+
+	
+	\newpage
+
+	\section{References}
+
+	\begin{itemize}
+	  \item https://github.com/imsure/parallel-programming/blob/master/matrix-multiplication/matrix-mul-pthread.c
+	  \item https://stackoverflow.com/questions/2446122/using-pthread-to-perform-matrix-multiplication?rq=1
+      \item https://macboypro.wordpress.com/2009/05/20/matrix-multiplication-in-c-using-pthreads-linux/
+      \item http://www.diva-portal.org/smash/get/diva2:944063/FULLTEXT02
+	\end{itemize}
+
+\end{document}
+
+
+\grid
+
